@@ -43,6 +43,66 @@ public:
 
 		size++;
 	}
+
+	void PopFront()
+	{
+		if (head == nullptr)
+		{
+			cout << "Linked List is Empty" << endl;
+		}
+		else
+		{
+			Node* deleteNode = head;
+
+			head = deleteNode->next;
+
+			delete deleteNode;
+
+			size--;
+		}
+	}
+
+	void PushBack(T data)
+	{
+		if (head == nullptr)
+		{
+			head = new Node;
+			head->data = data;
+			head->next = nullptr;
+		}
+		else
+		{
+			Node* currentNode = head;
+
+			while (currentNode->next != nullptr)
+			{
+				currentNode = currentNode->next;
+			}
+
+			Node* newNode = new Node;
+
+			currentNode->next = newNode;
+
+			newNode->data = data;
+			newNode->next = nullptr;
+		}
+	}
+
+	void Show()
+	{
+		Node* currentNode = head;
+
+		while (currentNode != nullptr)
+		{
+			cout << currentNode->data << " ";
+			currentNode = currentNode->next;
+		}
+	}
+
+	void T()
+	{
+		Node*  = head;
+	}
 };
 
 int main()
@@ -50,5 +110,19 @@ int main()
 	SingleLinkedList<int> singleLinkedList;
 
 	singleLinkedList.PushFront(10);
-	singleLinkedList.PushFront(20); // [20] <----- [10]
+	singleLinkedList.PushFront(20);
+
+	// [20] - [10]
+
+	singleLinkedList.PushBack(5);
+	singleLinkedList.PushBack(0);
+
+	// [20] - [10] - [5] - [0]
+
+	singleLinkedList.Show();
+
+	singleLinkedList.PopFront();
+	singleLinkedList.PopFront();
+
+	return 0;
 }
